@@ -1,11 +1,11 @@
-package com.util.IPUtil;
+package com.util.iputil;
 
 import org.apache.commons.lang.StringUtils;
 
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * 获取Ip地址
+ * 获取Ip地址工具类
  *
  * @author zhongtao on 2018/12/29
  */

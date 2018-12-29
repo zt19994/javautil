@@ -8,7 +8,6 @@
     <artifactId>java-util</artifactId>
     <version>1.0-SNAPSHOT</version>
     
-
     <dependencies>
         <!-- 日志打印 log4j包 -->
         <dependency>
