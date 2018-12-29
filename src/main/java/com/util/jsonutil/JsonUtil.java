@@ -109,22 +109,10 @@ public class JsonUtil {
      * @return String
      */
     public static String getJSONString(Object object) {
-//        String jsonString = null;
-//        // 日期值处理器
-//        JsonConfig jsonConfig = new JsonConfig();
-//        jsonConfig.registerJsonValueProcessor(java.util.Date.class, new JsonDateValueProcessor());
-//        jsonConfig.setCycleDetectionStrategy(CycleDetectionStrategy.LENIENT);
-//        if (object != null) {
-//            if (object instanceof Collection || object instanceof Object[]) {
-//                jsonString = JSONArray.fromObject(object, jsonConfig).toString();
-//            } else {
-//                jsonString = JSONObject.fromObject(object, jsonConfig).toString();
-//            }
-//        }
-//        return jsonString == null ? "{}" : jsonString;
         SerializeConfig mapping = new SerializeConfig();
         mapping.put(Date.class, new SimpleDateFormatSerializer("yyyy-MM-dd HH:mm:ss"));
 
         return JSON.toJSONString(object, mapping, new SerializeFilter[0]);
     }
+
 }
