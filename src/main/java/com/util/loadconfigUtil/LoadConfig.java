@@ -1,4 +1,4 @@
-package loadconfigUtil;
+package com.util.loadconfigUtil;
 
 import com.util.logutil.MyLogger;
 
