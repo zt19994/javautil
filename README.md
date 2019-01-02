@@ -5,3 +5,4 @@
 3. 获取ip工具类 IPAddress
 4. map 工具类
 5. 发送邮件工具类 TransportUtil
+6. Cookie 工具类
