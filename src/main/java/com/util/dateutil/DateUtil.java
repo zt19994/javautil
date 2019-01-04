@@ -27,7 +27,6 @@ public class DateUtil {
      * 私有化构造方法，防止外部调用
      */
     private DateUtil() {
-
     }
 
     /**
@@ -134,7 +133,6 @@ public class DateUtil {
         } catch (ParseException e) {
             LOGGER.error("String转Date失败！", e);
         }
-
         return time;
     }
 
@@ -170,7 +168,6 @@ public class DateUtil {
             // cd.add(Calendar.MONTH, n);//增加一个月
 
             return sdf.format(cd.getTime());
-
         } catch (Exception e) {
             LOGGER.error("", e);
             return null;
@@ -182,7 +179,7 @@ public class DateUtil {
      *
      * @param nowDate 日期1
      * @param endDate 日期2
-     * @return nowDate<endDate 返回true,否则返回false
+     * @return nowDate小于endDate 返回true，否则返回false
      */
     public static boolean compare_date(String nowDate, String endDate) {
 
@@ -206,7 +203,7 @@ public class DateUtil {
      *
      * @param nowDate 日期1
      * @param endDate 日期2
-     * @return nowDate<endDate 返回true,否则返回false
+     * @return nowDate小于endDate 返回true,否则返回false
      */
     public static boolean compare_date_pv(Date nowDate, Date endDate) {
 

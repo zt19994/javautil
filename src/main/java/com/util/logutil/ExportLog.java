@@ -84,15 +84,15 @@ public class ExportLog {
         String filename = String.valueOf(System.currentTimeMillis()).concat(".xls");
         response.setContentType("application/vnd.ms-excel");
         response.setHeader("Content-disposition", "attachment;filename=" + filename);
-        OutputStream ouputStream;
+        OutputStream outputStream;
         try {
-            ouputStream = response.getOutputStream();
-            wb.write(ouputStream);
-            ouputStream.flush();
-            ouputStream.close();
+            outputStream = response.getOutputStream();
+            wb.write(outputStream);
+            outputStream.flush();
+            outputStream.close();
         } catch (IOException e) {
             LOGGER.error("" + e);
-            ouputStream = null;
+            outputStream = null;
         }
     }
 }
