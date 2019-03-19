@@ -3,6 +3,7 @@ package com.util.jsonutil;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.serializer.SerializeConfig;
 import com.alibaba.fastjson.serializer.SerializeFilter;
+import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.alibaba.fastjson.serializer.SimpleDateFormatSerializer;
 import com.util.logutil.MyLogger;
 import net.sf.ezmorph.object.DateMorpher;
@@ -10,10 +11,7 @@ import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import net.sf.json.util.JSONUtils;
 
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
+import java.util.*;
 
 /**
  * JSON工具类
@@ -115,4 +113,54 @@ public class JsonUtil {
         return JSON.toJSONString(object, mapping, new SerializeFilter[0]);
     }
 
+
+    /**
+     * json 转 list
+     *
+     * @param json
+     * @return
+     */
+    public static List<Map<String, Object>> json2List(Object json) {
+        com.alibaba.fastjson.JSONArray jsonArr = (com.alibaba.fastjson.JSONArray) json;
+        List<Map<String, Object>> arrList = new ArrayList<Map<String, Object>>();
+        for (int i = 0; i < jsonArr.size(); ++i) {
+            arrList.add(strJson2Map(jsonArr.getString(i)));
+        }
+        return arrList;
+    }
+
+
+    /**
+     * json字符转map
+     *
+     * @param json
+     * @return
+     */
+    public static Map<String, Object> strJson2Map(String json) {
+        com.alibaba.fastjson.JSONObject jsonObject = com.alibaba.fastjson.JSONObject.parseObject(json);
+        return json2Map(jsonObject);
+    }
+
+
+    /**
+     * json转map
+     *
+     * @param jsonObject
+     * @return
+     */
+    public static Map<String, Object> json2Map(com.alibaba.fastjson.JSONObject jsonObject) {
+        Map<String, Object> resMap = new HashMap<String, Object>();
+        Iterator<Map.Entry<String, Object>> it = jsonObject.entrySet().iterator();
+        while (it.hasNext()) {
+            Map.Entry<String, Object> param = (Map.Entry<String, Object>) it.next();
+            if (param.getValue() instanceof com.alibaba.fastjson.JSONObject) {
+                resMap.put(param.getKey(), strJson2Map(param.getValue().toString()));
+            } else if (param.getValue() instanceof com.alibaba.fastjson.JSONArray) {
+                resMap.put(param.getKey(), json2List(param.getValue()));
+            } else {
+                resMap.put(param.getKey(), com.alibaba.fastjson.JSONObject.toJSONString(param.getValue(), SerializerFeature.WriteClassName));
+            }
+        }
+        return resMap;
+    }
 }
