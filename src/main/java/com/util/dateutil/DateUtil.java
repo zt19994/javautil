@@ -232,4 +232,43 @@ public class DateUtil {
         long startTime = startDate.getTime();
         return (int) (nowTime - startTime) / 1000;
     }
+
+
+    /**
+     * 秒数转为 时：分：秒 格式
+     *
+     * @param strSeconds 秒数
+     * @return
+     */
+    public static String secondsToDate(String strSeconds) {
+        int seconds = Integer.parseInt(strSeconds);
+        int hour = 0;
+        int minute = 0;
+        int second = 0;
+        second = seconds % 60;
+        seconds -= second;
+        if (seconds > 0) {
+            seconds /= 60;
+            minute = seconds % 60;
+            seconds -= minute;
+            if (seconds > 0) {
+                hour = seconds / 60;
+            }
+        }
+        return hour + ":" + minute + ":" + second;
+    }
+
+
+    /**
+     * 时：分：秒 格式 转为秒数
+     *
+     * @param time
+     * @return
+     */
+    public static Integer DateToSeconds(String time) {
+        int seconds = 0;
+        String[] split = time.split(":");
+        seconds = Integer.parseInt(split[0]) * 3600 + Integer.parseInt(split[1]) * 60 + Integer.parseInt(split[2]);
+        return seconds;
+    }
 }
