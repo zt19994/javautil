@@ -11,11 +11,9 @@ public class OperationLog {
 
     /**
      * 日志编号op_id
-     *
-     * @see #getOpId()
-     * @see #setOpId(Long)
      */
     private Long opId;
+
     /**
      * createId
      */
@@ -23,39 +21,36 @@ public class OperationLog {
 
     /**
      * 操作人
-     *
-     * @see #getOpName()
-     * @see #setOpName(String)
      */
     private String opName;
 
-    /*
-     *操作时间
+    /**
+     * 操作时间
      */
     private Date opTime;
 
-    /*
-     *操作IP
+    /**
+     * 操作IP
      */
     private String opIp;
 
-    /*
-     *操作关键字
+    /**
+     * 操作关键字
      */
     private String opCode;
 
-    /*
-     *操作内容
+    /**
+     * 操作内容
      */
     private String opContent;
 
-    /*
-     *第三方标示0否1是
+    /**
+     * 第三方标示0否1是
      */
     private String opIsSeller;
 
-    /*
-     *第三方编号
+    /**
+     * 第三方编号
      */
     private Long thirdId;
 

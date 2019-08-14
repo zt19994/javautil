@@ -19,7 +19,7 @@ public class DateUtil {
     /**
      * 记录日志对象
      */
-    public static final MyLogger LOGGER = new MyLogger(DateUtil.class);
+    private static final MyLogger LOGGER = new MyLogger(DateUtil.class);
 
     private static final String DATE = "yyyy-MM-dd";
 
@@ -28,6 +28,7 @@ public class DateUtil {
      */
     private DateUtil() {
     }
+
 
     /**
      * 返回String字符串 格式：yyyy-MM-dd HH:mm:ss
@@ -40,6 +41,7 @@ public class DateUtil {
         return time.format(date);
     }
 
+
     /**
      * 返回String字符串 格式：yyyy-MM-dd
      *
@@ -50,6 +52,7 @@ public class DateUtil {
         SimpleDateFormat time = new SimpleDateFormat(DATE);
         return time.format(date);
     }
+
 
     /**
      * 返回String字符串 格式：yyyy-MM-dd
@@ -62,6 +65,7 @@ public class DateUtil {
         return time.format(date);
     }
 
+
     /**
      * 返回String字符串 格式：yyyy-MM-dd
      *
@@ -72,6 +76,7 @@ public class DateUtil {
         SimpleDateFormat time = new SimpleDateFormat("yyyyMMdd");
         return Integer.parseInt(time.format(date));
     }
+
 
     /**
      * 返回String字符串 格式：yyyy-MM-dd
@@ -85,6 +90,7 @@ public class DateUtil {
         return new SimpleDateFormat("yyyy-MM-dd ").format(cal.getTime());
     }
 
+
     /**
      * 当前时间的字符串
      *
@@ -96,10 +102,18 @@ public class DateUtil {
         return time.format(date);
     }
 
+
+    /**
+     * 毫秒数
+     *
+     * @param date
+     * @return
+     */
     public static String toNanosecond(Date date) {
         SimpleDateFormat time = new SimpleDateFormat("yyyyMMddHHmmssSSS", Locale.CHINA);
         return time.format(date);
     }
+
 
     /**
      * String转Date
@@ -115,9 +129,9 @@ public class DateUtil {
         } catch (ParseException e) {
             LOGGER.error("String转Date失败！", e);
         }
-
         return time;
     }
+
 
     /**
      * String转Date
@@ -136,6 +150,7 @@ public class DateUtil {
         return time;
     }
 
+
     /**
      * 当前时间加几天
      *
@@ -150,6 +165,7 @@ public class DateUtil {
         calendar.add(Calendar.DAY_OF_MONTH, number);
         return format.format(calendar.getTime());
     }
+
 
     /**
      * 日期加一天
@@ -174,6 +190,7 @@ public class DateUtil {
         }
     }
 
+
     /**
      * 比较两个日期 大小
      *
@@ -182,7 +199,6 @@ public class DateUtil {
      * @return nowDate小于endDate 返回true，否则返回false
      */
     public static boolean compare_date(String nowDate, String endDate) {
-
         DateFormat df = new SimpleDateFormat(DATE);
         try {
             Date dt1 = df.parse(nowDate);
@@ -198,6 +214,7 @@ public class DateUtil {
         return false;
     }
 
+
     /**
      * 比较两个日期大小
      *
@@ -206,7 +223,6 @@ public class DateUtil {
      * @return nowDate小于endDate 返回true,否则返回false
      */
     public static boolean compare_date_pv(Date nowDate, Date endDate) {
-
         try {
             Date dt1 = nowDate;
             Date dt2 = endDate;
@@ -221,6 +237,7 @@ public class DateUtil {
         return false;
     }
 
+
     /**
      * 计算当前时间和参数(过去时间)之间间隔多少秒
      *
@@ -228,7 +245,7 @@ public class DateUtil {
      * @return 间隔多少秒
      */
     public static int intervalSecondToNow(Date startDate) {
-        long nowTime = new Date().getTime();
+        long nowTime = System.currentTimeMillis();
         long startTime = startDate.getTime();
         return (int) (nowTime - startTime) / 1000;
     }

@@ -3,7 +3,7 @@ package com.util.mailutil;
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.Statement;
 import com.util.logutil.MyLogger;
-import com.util.loadconfigUtil.LoadConfig;
+import com.util.loadconfigutil.LoadConfig;
 
 import javax.mail.*;
 import javax.mail.Message.RecipientType;

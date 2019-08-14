@@ -154,7 +154,8 @@ public class XmlUtil {
         Transformer t;
         try {
             t = tf.newTransformer();
-            t.setOutputProperty("encoding", UTF8);// 解决中文问题
+            // 解决中文问题
+            t.setOutputProperty("encoding", UTF8);
             ByteArrayOutputStream bos = new ByteArrayOutputStream();
             t.transform(new DOMSource(document), new StreamResult(bos));
             xmlStr = bos.toString(UTF8);

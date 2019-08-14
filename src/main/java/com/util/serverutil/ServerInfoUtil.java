@@ -33,7 +33,8 @@ public class ServerInfoUtil {
         InputStream is = null;
         InputStreamReader isr = null;
         BufferedReader brStat = null;
-        StringTokenizer tokenStat = null; // 用来分隔String的应用类
+        // 用来分隔String的应用类
+        StringTokenizer tokenStat = null;
         try {
             Process process = Runtime.getRuntime().exec("top -b"); // top命令是Linux下常用的性能分析工具，能够实时显示系统中各个进程的资源使用情况。
             is = process.getInputStream(); // 可以读取新开启的程序的 System.out.print 输出的内容
@@ -90,7 +91,8 @@ public class ServerInfoUtil {
     public static Float getDiskUsage() {
         try {
             Runtime rt = Runtime.getRuntime();
-            Process p = rt.exec("df -hl");// df -hl 查看硬盘空间
+            // df -hl 查看硬盘空间
+            Process p = rt.exec("df -hl");
             BufferedReader in = null;
             try {
                 in = new BufferedReader(new InputStreamReader(p.getInputStream()));
@@ -104,8 +106,9 @@ public class ServerInfoUtil {
                     }
                     strArray = str.split(" ");
                     for (String para : strArray) {
-                        if (para.trim().length() == 0)
+                        if (para.trim().length() == 0) {
                             continue;
+                        }
                         if (para.endsWith("%")) {
                             return Float.parseFloat(para);
                         }

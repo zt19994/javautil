@@ -23,13 +23,14 @@ public class JsonUtil {
     /**
      * 日志
      */
-    public static final MyLogger LOGGER = new MyLogger(JsonUtil.class);
+    private static final MyLogger LOGGER = new MyLogger(JsonUtil.class);
 
     /**
      * 构造
      */
     private JsonUtil() {
     }
+
 
     /**
      * 从json HASH表达式中获取一个map，该map支持嵌套功能 形如：{"id" : "johncon", "name" : "小强"}
@@ -48,6 +49,7 @@ public class JsonUtil {
         }
         return map;
     }
+
 
     /**
      * 将json类型的数组换为Object类型数组
@@ -72,6 +74,7 @@ public class JsonUtil {
         return obj;
     }
 
+
     /**
      * 从一个JSON 对象字符格式中得到一个java对象，形如： {"id" : idValue, "name" : nameValue,
      * "aBean" : {"aBeanId" : aBeanIdValue, ...}}
@@ -91,6 +94,7 @@ public class JsonUtil {
         return JSONObject.toBean(jsonObject, clazz);
     }
 
+
     /**
      * 设定日期转换格式
      */
@@ -98,6 +102,7 @@ public class JsonUtil {
         // 设定日期转换格式
         JSONUtils.getMorpherRegistry().registerMorpher(new DateMorpher(new String[]{"yyyy-MM-dd HH:mm:ss"}));
     }
+
 
     /**
      * 把数据对象转换成json字符串 DTO对象形如：{"id" : idValue, "name" : nameValue, ...}

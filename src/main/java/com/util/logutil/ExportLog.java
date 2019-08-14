@@ -92,7 +92,6 @@ public class ExportLog {
             outputStream.close();
         } catch (IOException e) {
             LOGGER.error("" + e);
-            outputStream = null;
         }
     }
 }

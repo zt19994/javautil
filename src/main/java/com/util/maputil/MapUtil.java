@@ -19,7 +19,7 @@ public class MapUtil {
     /**
      * 日志
      */
-    public static final MyLogger LOGGER = new MyLogger(MapUtil.class);
+    private static final MyLogger LOGGER = new MyLogger(MapUtil.class);
 
     private MapUtil() {
     }

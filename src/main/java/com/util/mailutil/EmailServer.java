@@ -8,50 +8,62 @@ import java.util.Date;
  * @author zhongtao on 2019/1/2
  */
 public class EmailServer {
+
     /**
      * 邮箱服务器ID
      */
     private Long serverId;
+
     /**
      * 发信邮箱
      */
     private String sendMail;
+
     /**
      * 发信人
      */
     private String sendName;
+
     /**
      * SMTP账号
      */
     private String smtpAccount;
+
     /**
      * SMTP密码
      */
     private String smtpPass;
+
     /**
      * SMTP服务器
      */
     private String smtpServer;
+
     /**
      * SMTP端口号
      */
     private String smtpPort;
+
     /**
      * 是否开启
      */
     private String isOpen;
+
     /**
      * 是否验证
      */
     private String isCheck;
+
     /**
      * 创建时间
      */
     private Date createTime;
+
     /**
      * 修改时间
      */
     private Date modifyTime;
+
     /**
      * 是否删除
      */
@@ -156,12 +168,9 @@ public class EmailServer {
         //如果创建时间不为空
         if (createTime != null) {
             //获取创建时间值
-            Date tEmp = (Date) createTime.clone();
             //如果不为空
-            if (tEmp != null) {
-                //赋值给创建时间
-                this.createTime = tEmp;
-            }
+            //赋值给创建时间
+            this.createTime = (Date) createTime.clone();
         }
     }
 
@@ -192,12 +201,9 @@ public class EmailServer {
         //如果修改时间不为空
         if (modifyTime != null) {
             //获取修改时间
-            Date tEmp = (Date) modifyTime.clone();
             //如果修改时间不为空
-            if (tEmp != null) {
-                //设置为修改时间
-                this.modifyTime = tEmp;
-            }
+            //设置为修改时间
+            this.modifyTime = (Date) modifyTime.clone();
         }
     }
 

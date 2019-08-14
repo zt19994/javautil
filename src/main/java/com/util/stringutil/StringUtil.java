@@ -9,6 +9,7 @@ import java.util.regex.Pattern;
  * @author zhongtao on 2019/1/7
  */
 public class StringUtil {
+
     /**
      * 无参构造方法
      */
@@ -24,26 +25,30 @@ public class StringUtil {
 
     }
 
-    public static boolean isEmpty(String s) {
-        if (s == null || s.length() <= 0) {
-            return true;
-        }
-        return false;
+
+    private static boolean isEmpty(String s) {
+        return s == null || s.length() <= 0;
     }
 
     public static boolean isNotEmpty(String s) {
         return !isEmpty(s);
     }
 
-    //金额验证
+    /**
+     * 预编译
+     */
+    private static Pattern NUMBER_PATTERN = Pattern.compile("^(([1-9]{1}\\d*)|([0]{1}))(\\.(\\d){0,2})?$");
+
+    /**
+     * 金额验证
+     *
+     * @param str
+     * @return
+     */
     public static boolean isNumber(String str) {
-        Pattern pattern = Pattern.compile("^(([1-9]{1}\\d*)|([0]{1}))(\\.(\\d){0,2})?$"); // 判断小数点后2位的数字的正则表达式
-        Matcher match = pattern.matcher(str);
-        if (match.matches() == false) {
-            return false;
-        } else {
-            return true;
-        }
+        // 判断小数点后2位的数字的正则表达式
+        Matcher match = NUMBER_PATTERN.matcher(str);
+        return match.matches();
     }
 
     /**

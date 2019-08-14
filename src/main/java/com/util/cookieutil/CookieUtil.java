@@ -35,7 +35,8 @@ public class CookieUtil {
         Cookie cookie = new Cookie(name, value2);
         cookie.setPath("/");
         if (maxAge > 0) {
-            cookie.setMaxAge(maxAge);// 设置时间最大值
+            // 设置时间最大值
+            cookie.setMaxAge(maxAge);
         }
         // 添加
         response.addCookie(cookie);
@@ -75,7 +76,7 @@ public class CookieUtil {
         // 查找名字匹配的cookie
         if (cookieMap.containsKey(name)) {
             // 获取该cookie
-            Cookie cookie = (Cookie) cookieMap.get(name);
+            Cookie cookie = cookieMap.get(name);
             // 设置有效时间为0,即设置失效
             cookie.setMaxAge(0);
             response.addCookie(cookie);
@@ -91,7 +92,7 @@ public class CookieUtil {
      */
     private static Map<String, Cookie> ReadCookieMap(HttpServletRequest request) {
         // 将cookie封装到Map里面
-        Map<String, Cookie> cookieMap = new HashMap<String, Cookie>();
+        Map<String, Cookie> cookieMap = new HashMap<String, Cookie>(16);
         // 获取服务器端的cookie
         Cookie[] cookies = request.getCookies();
         // 如果不为空
