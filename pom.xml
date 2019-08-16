@@ -81,5 +81,12 @@
             <version>3.8</version>
         </dependency>
 
+        <!--其他需要的包 对apache公共包的支持 -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.4</version>
+        </dependency>
+
     </dependencies>
 </project>
