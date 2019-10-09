@@ -35,7 +35,7 @@ public interface DenyPolicy {
 
         @Override
         public void reject(Runnable runnable, ThreadPool threadPool) {
-            // todo RunableDenyException
+            throw new RunnableDenyException("The runnable " + runnable + " will be abort.");
         }
     }
 
