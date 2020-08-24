@@ -1,6 +1,6 @@
 package com.util.logutil;
 
-import com.util.dateutil.DateUtil;
+import com.util.dateutil.DateUtil2;
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
@@ -77,7 +77,7 @@ public class ExportLog {
                 hssfRow.createCell(1).setCellValue(log.getOpName());
                 hssfRow.createCell(2).setCellValue(log.getOpIp());
                 hssfRow.createCell(WIDTH3).setCellValue(log.getOpCode());
-                hssfRow.createCell(WIDTH4).setCellValue(DateUtil.dataFormat(log.getOpTime()));
+                hssfRow.createCell(WIDTH4).setCellValue(DateUtil2.dataFormat(log.getOpTime()));
                 hssfRow.createCell(WIDTH5).setCellValue(log.getOpContent());
             }
         }

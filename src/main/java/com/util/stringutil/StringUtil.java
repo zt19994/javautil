@@ -1,7 +1,11 @@
 package com.util.stringutil;
 
+import com.google.common.base.Splitter;
+
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 /**
  * 字符串工具类
@@ -144,5 +148,98 @@ public class StringUtil {
             }
         }
         return new String(out, 0, outLen);
+    }
+
+
+    /**
+     * 将字符串分隔为int列表
+     * 1,2,3,4 -> [1, 2, 3, 4]
+     *
+     * @param str
+     * @return
+     */
+    public static List<Integer> splitToListInt(String str) {
+        List<String> strList = Splitter.on(",").trimResults().omitEmptyStrings().splitToList(str);
+        return strList.stream().map(Integer::parseInt).collect(Collectors.toList());
+    }
+
+
+    /**
+     * 字符串转化为字符串列表
+     *
+     * @param str
+     * @return
+     */
+    public static List<String> splitToListStr(String str) {
+        return Splitter.on(",").trimResults().omitEmptyStrings().splitToList(str);
+    }
+
+
+    /**
+     * 校验字符能否转为整数类型
+     *
+     * @param str
+     * @return
+     */
+    public static boolean canParseInt(String str) {
+        //验证是否为空
+        if (str == null) {
+            return false;
+
+        }
+        //使用正则表达式判断该字符串是否为数字，第一个\是转义符，\d+表示匹配1个或 //多个连续数字，"+"和"*"类似，"*"表示0个或多个
+        return str.matches("\\d+");
+    }
+
+
+    /**
+     * 判断字符串是否是http或https开头
+     *
+     * @param str
+     * @return
+     */
+    public static boolean isHttpOrHttps(String str) {
+        boolean isHttp = str.startsWith("http");
+        boolean isHttps = str.startsWith("https");
+        return isHttp || isHttps;
+    }
+
+
+    /**
+     * 判断是否是手机号码
+     *
+     * @param mobiles
+     * @return
+     */
+    public static boolean isMobileNumber(String mobiles) {
+        String pattern = "^((13[0-9])|(15[^4,\\D])|(18[0-9]))\\d{8}$";
+        Pattern p = Pattern.compile(pattern);
+        Matcher m = p.matcher(mobiles);
+        return m.matches();
+    }
+
+
+    /**
+     * 校验邮箱格式
+     *
+     * @param value
+     * @return
+     */
+    public static boolean checkEmail(String value) {
+        String pattern = "\\w+([-+.]\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*";
+        Pattern p1 = Pattern.compile(pattern);
+        Matcher m = p1.matcher(value);
+        return m.matches();
+    }
+
+
+    /**
+     * string转long
+     *
+     * @param value
+     * @return
+     */
+    public static Long stringToLong(String value) {
+        return Long.valueOf(value);
     }
 }
